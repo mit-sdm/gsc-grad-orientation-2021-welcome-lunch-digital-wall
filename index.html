@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+        body {
+            background-color: black;
+            font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+            font-size: 2em;
+        }
+        #container {
+            display: flex;
+            justify-content: center;
+        }
+        table {
+            text-align: center;
+        }
+        table tr td {
+            background-color: #A31F34;
+            color: white;
+            padding: 1em;
+            border-radius: 0.5em;
+            margin-top: 1em;
+        }
+    </style>
+  </head>
+  <body>
+
+    <div id="container"></div>
+
+        <script>
+            const reqListener = function() {
+                const jsonString = this.responseText.match(/(?<="table":).*(?=}\);)/g)[0];
+                const json = JSON.parse(jsonString);
+                
+                var table = '<table>'
+                for (var i = json.rows.length - 1 ;i >= 0;i--){
+                    const funFact = json.rows[i].c[1].v;
+                    table += `<tr><td>${funFact}</td></tr>`;
+                }
+                table += '</table>'
+                
+                document.getElementById("container").innerHTML = table;
+            }
+            
+            const id = '1fCSYf4lgxIIyQOZCUUOs4VHlPoQ4CY3BuF0h_XxiBBE';
+            const gid = '0';
+            const url = 'https://docs.google.com/spreadsheets/d/'+id+'/gviz/tq?tqx=out:json&tq&gid='+gid;
+
+            var oReq = new XMLHttpRequest();
+            oReq.onload = reqListener;
+            oReq.open("get", url, true);
+            oReq.send();
+             
+        </script>
+  </body>
+</html>
