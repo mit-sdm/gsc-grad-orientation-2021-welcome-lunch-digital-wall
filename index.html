@@ -4,28 +4,42 @@
     <style type="text/css">
         body {
             background-color: black;
+            color: white;
+            text-align: center;
             font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
             font-size: 2em;
         }
-        #container {
+        #container, #content {
             display: flex;
             justify-content: center;
         }
-        table {
-            text-align: center;
-        }
         table tr td {
             background-color: #A31F34;
-            color: white;
             padding: 1em;
             border-radius: 0.5em;
             margin-top: 1em;
+        }
+        #qrcodes {
+            padding-left: 2em;
         }
     </style>
   </head>
   <body>
 
-    <div id="container"></div>
+    <h1>Fun facts from your peers!</h1>
+    
+    <div id="content">
+        <div id="container"></div>
+        <div id="qrcodes">
+            <h2>Post Here:</h2>
+            <img src="qr-code-digital-wall-form.png" alt="qr-code-digital-wall-form"/>
+            <h5>bit.ly/mit-digital-wall-form</h5>
+
+            <h2>All Responses:</h2>
+            <img src="qr-code-digital-wall-responses.png" alt="qr-code-digital-wall-responses"/>
+            <h5>bit.ly/mit-digi-wall-responses</h5>
+        </div>
+    </div>
 
         <script>
             const reqListener = function() {
