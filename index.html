@@ -37,7 +37,7 @@
 
             <h2>All Responses:</h2>
             <img src="qr-code-digital-wall-responses.png" alt="qr-code-digital-wall-responses"/>
-            <h5>bit.ly/mit-digi-wall-responses</h5>
+            <h5>bit.ly/mit-digital-wall-responses</h5>
         </div>
     </div>
 
@@ -60,10 +60,14 @@
             const gid = '0';
             const url = 'https://docs.google.com/spreadsheets/d/'+id+'/gviz/tq?tqx=out:json&tq&gid='+gid;
 
-            var oReq = new XMLHttpRequest();
-            oReq.onload = reqListener;
-            oReq.open("get", url, true);
-            oReq.send();
+            const updateContent = function() {
+                var oReq = new XMLHttpRequest();
+                oReq.onload = reqListener;
+                oReq.open("get", url, true);
+                oReq.send();
+                setTimeout(updateContent, 5*1000);
+            }
+            updateContent();
              
         </script>
   </body>
